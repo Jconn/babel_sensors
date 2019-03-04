@@ -15,13 +15,13 @@ def do_data(cycles):
             result = (result | (data.value() << (23 - i)))
     time.sleep(.01)
     return result
-data = Pin(27, Pin.IN)
-clk = Pin(26, Pin.OUT)
+data = Pin(26, Pin.IN)
+clk = Pin(27, Pin.OUT)
 
 
 r1 = do_data(26) 
 r1 = 1.0*r1/(1<<24 -1) * 3.26/2 
 r2 = do_data(25)
 clk.value(1)
-babel_out.babel_strstore( str(r1) + "," + str(r2) + " adc2")
+babel_out.babel_strstore( str(round(r2,5)) + " adc2")
 
